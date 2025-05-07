@@ -10,12 +10,14 @@ let chatHistory = {};
 function renderChat() {
   chatbox.innerHTML = "";
   const messages = chatHistory[currentChatId] || [];
-  messages.forEach(msg => {
+
+  messages.forEach((msg) => {
     const div = document.createElement("div");
     div.classList.add("message", msg.sender);
     div.innerText = msg.text;
     chatbox.appendChild(div);
   });
+
   chatbox.scrollTop = chatbox.scrollHeight;
 }
 
@@ -35,8 +37,11 @@ function addMessage(text, sender) {
   renderChat();
 }
 
+let i = 0;
+
 newChatBtn.onclick = () => {
-  currentChatId = "chat-" + Date.now();
+  i++;
+  currentChatId = "chat-" + i;
   chatHistory[currentChatId] = [];
   addChatToSidebar(currentChatId);
   renderChat();
@@ -44,7 +49,7 @@ newChatBtn.onclick = () => {
 
 function addChatToSidebar(chatId) {
   const li = document.createElement("li");
-  li.innerText = "Söhbət " + chatId.split("-")[1];
+  li.innerText = "Chat " + chatId.split("-")[1];
   li.onclick = () => {
     currentChatId = chatId;
     renderChat();
@@ -53,3 +58,14 @@ function addChatToSidebar(chatId) {
 }
 
 newChatBtn.click();
+
+// chatHistory = {
+//   "chat-1": [
+//     { sender: "user", text: "Müəllim, işə götürərsiz?" },
+//     { sender: "bot", text: "Dərsdən sonra yaxınlaş." },
+//   ],
+//   "chat-2": [
+//     { sender: "user", text: "Müəllim, 15 yazarsız?" },
+//     { sender: "bot", text: "FF-ə də 10 yazdım get" },
+//   ],
+// };

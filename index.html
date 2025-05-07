@@ -1,26 +1,27 @@
 <!DOCTYPE html>
-<html lang="az">
-<head>
-  <meta charset="UTF-8" />
-  <title>Offline Chatbot</title>
-  <link rel="stylesheet" href="style/chat.css" />
-</head>
-<body>
-  <div id="app">
-    <div id="sidebar">
-      <h3>Söhbətlər</h3>
-      <ul id="chatList"></ul>
-      <button id="newChatBtn">+ Yeni söhbət</button>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Offline Chatbot</title>
+    <link rel="stylesheet" href="style/chat.css" />
+  </head>
+  <body>
+    <div id="app">
+      <div id="sidebar">
+        <h3>Chats</h3>
+        <ul id="chatList"></ul>
+        <button id="newChatBtn">+ New chat</button>
+      </div>
+
+      <div id="mainChat">
+        <h2>Offline Chatbot 🤖</h2>
+        <div id="chatbox" class="chat-container"></div>
+        <textarea id="prompt" placeholder="Type your question..."></textarea
+        ><br />
+        <button id="sendBtn">Send</button>
+      </div>
     </div>
 
-    <div id="mainChat">
-      <h2>Offline Chatbot 🤖</h2>
-      <div id="chatbox" class="chat-container"></div>
-      <textarea id="prompt" placeholder="Sualını yaz..."></textarea><br />
-      <button id="sendBtn">Göndər</button>
-    </div>
-  </div>
-
-  <script src="renderer.js"></script>
-</body>
+    <script src="renderer.js"></script>
+  </body>
 </html>
