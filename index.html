@@ -1,42 +1,26 @@
 <!DOCTYPE html>
 <html lang="az">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Offline Chatbot</title>
-    <link rel="stylesheet" href="style/chat.css" />
-  </head>
-  <body>
-    <h2>Offline Chatbot 🤖</h2>
-    <div id="chatbox" class="chat-container"></div>
+<head>
+  <meta charset="UTF-8" />
+  <title>Offline Chatbot</title>
+  <link rel="stylesheet" href="style/chat.css" />
+</head>
+<body>
+  <div id="app">
+    <div id="sidebar">
+      <h3>Söhbətlər</h3>
+      <ul id="chatList"></ul>
+      <button id="newChatBtn">+ Yeni söhbət</button>
+    </div>
 
-    <textarea id="prompt" placeholder="Sualını yaz..."></textarea><br />
-    <button id="sendBtn">Göndər</button>
+    <div id="mainChat">
+      <h2>Offline Chatbot 🤖</h2>
+      <div id="chatbox" class="chat-container"></div>
+      <textarea id="prompt" placeholder="Sualını yaz..."></textarea><br />
+      <button id="sendBtn">Göndər</button>
+    </div>
+  </div>
 
-    <script>
-      const chatbox = document.getElementById("chatbox");
-      const promptInput = document.getElementById("prompt");
-      const sendBtn = document.getElementById("sendBtn");
-
-      sendBtn.onclick = async () => {
-        const prompt = promptInput.value.trim();
-        if (!prompt) return;
-
-        addMessage(prompt, "user");
-        promptInput.value = "";
-
-        const response = await window.electronAPI.askLLM(prompt);
-        addMessage(response, "bot");
-      };
-
-      function addMessage(text, sender) {
-        const msg = document.createElement("div");
-        msg.classList.add("message", sender);
-        msg.innerText = text;
-        chatbox.appendChild(msg);
-        chatbox.scrollTop = chatbox.scrollHeight;
-      }
-
-      //Test
-    </script>
-  </body>
+  <script src="renderer.js"></script>
+</body>
 </html>
